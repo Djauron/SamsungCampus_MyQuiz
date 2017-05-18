@@ -1,0 +1,103 @@
+body {
+    padding-bottom: 40px;
+    background-image: url("../img/background.jpg");
+}
+
+.form-signin {
+    max-width: 280px;
+    padding: 15px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.form-signin .form-control {
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+
+}
+
+.form-signin input {
+    border-radius: 1px;
+}
+.form-signin-heading {
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 2px 2px rgba(0,0,0,0.5);
+}
+
+.noAccount
+{
+    margin-left: 43.5%;
+    color: black;
+}
+
+#goSign
+{
+    margin-left: 43.5%;
+    color: black;
+}
+
+#navcolor
+{
+    background-color: #00CCFF;
+}
+
+.navbar {
+    background-color: black
+}
+
+.container p
+{
+    text-align: center;
+}
+
+.containerP
+{
+    background-color: #2E2E2E;
+    color: white;
+    border-radius: 2px;
+    margin-bottom: 5px;
+}
+
+.container-alert
+{
+    width: 13%;
+    margin: auto;
+}
+
+.container-alert p
+{
+    text-align: center;
+}
+
+.alert-success
+{
+    color: black;
+}
+
+.divCenter
+{
+    margin-left: 12%;
+}
+
+.infoTexte
+{
+    margin: auto;
+    width: 50%;
+   background-color: rgba(255,255,255,0.7);
+}
+
+.infoTexte p
+{
+    text-align: center;
+    font-size: 16px;
+}
+
+.forgotPwd
+{
+    text-align: center;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
