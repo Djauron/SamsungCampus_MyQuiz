@@ -1,0 +1,57 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title"></h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+
+                        <div class="col-md-9 col-lg-9 divCenter">
+                            <table class="table table-user-information">
+                                {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit form-signin' } }) }}
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        {{ form_label(form.email) }}
+                                        {{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder': 'form.email' } }) }}
+                                        {{ form_errors(form.email) }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        {{ form_label(form.username) }}
+                                        {{ form_widget(form.username, { 'attr': {'class': 'form-control', 'placeholder': 'form.username' } }) }}
+                                        {{ form_errors(form.username) }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                <tr>
+                                    <td>
+                                        {{ form_label(form.current_password) }}
+                                        {{ form_widget(form.current_password, { 'attr': {'class': 'form-control', 'placeholder': 'form.current_password' } }) }}
+                                        {{ form_errors(form.current_password) }}
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><div>
+                                            <input type="submit" class="btn" value="{{ 'profile.edit.submit'|trans }}" />
+                                        </div></td>
+                                </tr>
+
+                                </tbody>
+                                {{ form_end(form) }}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

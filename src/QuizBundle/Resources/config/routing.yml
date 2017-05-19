@@ -2,6 +2,18 @@ quiz_homepage:
     path:     /
     defaults: { _controller: QuizBundle:Quiz:index }
 
-quiz_quiz:
-    path:     /quiz
-    defaults: { _controller: QuizBundle:Quiz:quiz }
+quiz_create_categorie:
+    path:     /create/categorie
+    defaults: { _controller: QuizBundle:Categorie:create }
+
+quiz_edit_categorie:
+    path: /edit/categorie
+    defaults: { _controller: QuizBundle:Categorie:edit }
+
+quiz_create_theme:
+    path: /create/theme
+    defaults: { _controller: QuizBundle:Theme:create }
+
+quiz_edit_theme:
+    path: /edit/theme
+    defaults: { _controller: QuizBundle:Theme:edit }

@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping\JoinColumn;
 
 
 /**
- * @ORM\Entity(repositoryClass="QuizBundle/Entity/ReponseRepository")
+ * @ORM\Entity(repositoryClass="QuizBundle\Repository\ReponseRepository")
  * @ORM\Table(name="quiz_reponse")
  */
 class Reponse

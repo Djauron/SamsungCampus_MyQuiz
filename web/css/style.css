@@ -101,3 +101,8 @@ body {
     padding-bottom: 5px;
     padding-top: 5px;
 }
+
+.alert-warning
+{
+    color: black;
+}

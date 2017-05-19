@@ -4,12 +4,13 @@ namespace QuizBundle\Entity;
 
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\OneToMany;
+use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping\UniqueConstraint;
 
 /**
- * @ORM\Entity(repositoryClass="QuizBundle/Entity/ThemeRepository")
- * @ORM\Table(name="quiz_theme")
+ * @ORM\Entity(repositoryClass="QuizBundle\Repository\ThemeRepository")
+ * @ORM\Table(name="quiz_theme", uniqueConstraints={@UniqueConstraint(name="search_idx", columns={"name_theme"})})
  */
 class Theme
 {
@@ -26,7 +27,13 @@ class Theme
     private $name_theme;
 
     /**
-     * @ORM\OneToMany(targetEntity="Categorie", mappedBy="categorie")
+     * @ORM\Column(type="integer")
+     */
+    private $id_categorie;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Categorie", inversedBy="theme")
+     * @ORM\JoinColumn(name="id_categorie", referencedColumnName="id")
      */
 
     private $categorie;
@@ -56,6 +63,16 @@ class Theme
         $this->name_theme = $name_theme;
     }
 
+    public function getIdCategorie()
+    {
+        return $this->id_categorie;
+    }
+
+    public function setIdCategorie($id_categorie)
+    {
+        $this->id_categorie = $id_categorie;
+    }
+
     public function getCategorie()
     {
         return $this->categorie;
@@ -64,6 +81,7 @@ class Theme
     public function setCategorie($categorie)
     {
         $this->categorie = $categorie;
+        return $this->categorie;
     }
 
 }

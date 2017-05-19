@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Entity(repositoryClass="QuizBundle/Entity/QuizRepository")
+ * @ORM\Entity(repositoryClass="QuizBundle\Repository\QuizRepository")
  * @ORM\Table(name="quiz")
  */
 class Quiz
