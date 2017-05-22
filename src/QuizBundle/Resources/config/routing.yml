@@ -2,6 +2,14 @@ quiz_homepage:
     path:     /
     defaults: { _controller: QuizBundle:Quiz:index }
 
+quiz_create_quiz:
+    path:     /create/quiz
+    defaults: { _controller: QuizBundle:Quiz:create }
+
+quiz_create_quiz_two:
+    path:     /create/next/quiz/{nameQuiz}/{quizCategorie}
+    defaults: { _controller: QuizBundle:Quiz:createtwo }
+
 quiz_create_categorie:
     path:     /create/categorie
     defaults: { _controller: QuizBundle:Categorie:create }
@@ -10,6 +18,10 @@ quiz_edit_categorie:
     path: /edit/categorie
     defaults: { _controller: QuizBundle:Categorie:edit }
 
+quiz_delete_categorie:
+    path: /delete/categorie
+    defaults: { _controller: QuizBundle:Categorie:delete }
+
 quiz_create_theme:
     path: /create/theme
     defaults: { _controller: QuizBundle:Theme:create }
@@ -17,3 +29,7 @@ quiz_create_theme:
 quiz_edit_theme:
     path: /edit/theme
     defaults: { _controller: QuizBundle:Theme:edit }
+
+quiz_delete_theme:
+    path: /delete/theme
+    defaults: { _controller: QuizBundle:Theme:delete }

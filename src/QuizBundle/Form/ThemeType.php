@@ -17,11 +17,31 @@ class ThemeType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
+        if($options['block_name'] == 'create_theme')
+        {
+            $builder
+                ->add('id_categorie', EntityType::class, array(
+                    'class' => 'QuizBundle:Categorie',
+                    'choice_label' => 'namecategorie'));
+        }
+
+        if($options['block_name'] == 'edit_theme' || $options['block_name'] == 'delete_theme')
+        {
+            $builder
+                ->add('id', EntityType::class, array(
+                    'class' => 'QuizBundle:Theme',
+                    'choice_label' => 'nametheme'));
+        }
+
+
+        if($options['block_name'] != 'delete_theme')
+        {
+            $builder
+                ->add('name_theme');
+        }
+
         $builder
-            ->add('name_theme')
-            ->add('id_categorie', EntityType::class, array(
-                'class' => 'QuizBundle:Categorie',
-                'choice_label' => 'namecategorie'))
             ->add('save', SubmitType::class);
     }
     

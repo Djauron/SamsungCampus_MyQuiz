@@ -67,4 +67,32 @@ class CategorieController extends Controller
         return $this->render('QuizBundle:Categorie:edit_cat.html.twig',array('form' => $form->createView()));
     }
 
+    public function deleteAction(Request $request)
+    {
+        $cat = new Categorie();
+        $em = $this->getDoctrine()->getManager();
+
+        $form = $this->get('form.factory')->create(CategorieType::class, $cat, array('block_name' => 'delete_categorie'));
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid())
+        {
+
+            $cat = $em->getRepository('QuizBundle:Categorie')->find($request->request->get('quizbundle_categorie')['id']);
+
+            try
+            {
+                $em->remove($cat);
+                $em->flush();
+
+                $this->get('session')->getFlashBag()->add('success', 'Categorie Supprimer');
+            }
+            catch(\Exception $e)
+            {
+                $this->get('session')->getFlashBag()->add('warning', 'Erreur : Veuillez supprimer les themes lie a la categorie d\'abords');
+            }
+        }
+        return $this->render('QuizBundle:Categorie:delete_cat.html.twig', array('form' => $form->createView()));
+    }
+
 }

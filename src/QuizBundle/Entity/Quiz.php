@@ -48,7 +48,7 @@ class Quiz
     /**
      * @ORM\Column(type="integer")
      */
-    private $id_quiz;
+    private $id_theme;
 
 
     /**
@@ -122,14 +122,14 @@ class Quiz
         $this->id_categorie = $id_categorie;
     }
 
-    public function getIdQuiz()
+    public function getIdTheme()
     {
-        return $this->id_quiz;
+        return $this->id_theme;
     }
 
-    public function setIdQuiz($id_quiz)
+    public function setIdTheme($id_theme)
     {
-        $this->id_quiz = $id_quiz;
+        $this->id_theme = $id_theme;
     }
 
     public function getQuestion()

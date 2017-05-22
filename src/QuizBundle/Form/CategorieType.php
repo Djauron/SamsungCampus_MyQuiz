@@ -18,7 +18,7 @@ class CategorieType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
-        if($options['block_name'] == 'edit_categorie')
+        if($options['block_name'] == 'edit_categorie' || $options['block_name'] == 'delete_categorie')
         {
             $builder
                 ->add('id', EntityType::class, array(
@@ -26,8 +26,11 @@ class CategorieType extends AbstractType
                     'choice_label' => 'namecategorie'));
         }
 
-        $builder
-            ->add('name_categorie');
+        if($options['block_name'] != 'delete_categorie')
+        {
+            $builder
+                ->add('name_categorie');
+        }
 
         $builder
             ->add('save', SubmitType::class);
