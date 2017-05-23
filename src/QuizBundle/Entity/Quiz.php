@@ -6,6 +6,8 @@ namespace QuizBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping\OneToOne;
+use Doctrine\ORM\Mapping\JoinColumn;
 
 /**
  * @ORM\Entity(repositoryClass="QuizBundle\Repository\QuizRepository")
@@ -26,7 +28,7 @@ class Quiz
     private $name_quiz;
 
     /**
-     * @ORM\Column(type="string", length=100)
+     * @ORM\Column(type="integer")
      */
     private $createur;
 
@@ -52,13 +54,38 @@ class Quiz
 
 
     /**
-     * @ORM\OneToMany(targetEntity="Question", mappedBy="question")
+     * @OneToOne(targetEntity="Theme")
+     * @JoinColumn(name="id_theme", referencedColumnName="id")
+     */
+
+    private $theme;
+
+    /**
+     * @OneToOne(targetEntity="Categorie")
+     * @JoinColumn(name="id_categorie", referencedColumnName="id")
+     */
+
+    private $categorie;
+
+    /**
+     * @OneToOne(targetEntity="AppBundle\Entity\User")
+     * @JoinColumn(name="createur", referencedColumnName="id")
+     */
+
+    private $user;
+
+    /**
+     * @OneToMany(targetEntity="Question", mappedBy="question")
      */
 
     private $question;
 
+
     public function __construct()
     {
+        $this->theme = new ArrayCollection();
+        $this->categorie = new ArrayCollection();
+        $this->user = new ArrayCollection();
         $this->question = new ArrayCollection();
     }
 
@@ -140,5 +167,38 @@ class Quiz
     public function setQuestion($question)
     {
         $this->question = $question;
+    }
+
+    public function getTheme()
+    {
+        return $this->theme;
+    }
+
+    public function setTheme($theme)
+    {
+        $this->theme = $theme;
+        return $this->theme;
+    }
+
+    public function getCategorie()
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie($categorie)
+    {
+        $this->categorie = $categorie;
+        return $this->categorie;
+    }
+
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    public function setUser($user)
+    {
+        $this->user = $user;
+        return $this->user;
     }
 }

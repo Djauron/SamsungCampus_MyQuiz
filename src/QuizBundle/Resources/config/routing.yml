@@ -7,8 +7,8 @@ quiz_create_quiz:
     defaults: { _controller: QuizBundle:Quiz:create }
 
 quiz_create_quiz_two:
-    path:     /create/next/quiz/{nameQuiz}/{quizCategorie}
-    defaults: { _controller: QuizBundle:Quiz:createtwo }
+    path:     /create/next/quiz/{id}
+    defaults: { _controller: QuizBundle:Question:create }
 
 quiz_create_categorie:
     path:     /create/categorie

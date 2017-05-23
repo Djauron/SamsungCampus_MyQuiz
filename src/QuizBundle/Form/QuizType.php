@@ -20,42 +20,13 @@ class QuizType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $count = 1;
         if($options['block_name'] == 'create_quiz')
         {
             $builder
                 ->add('name_quiz')
-                ->add('id_categorie', EntityType::class, array(
-                    'class' => 'QuizBundle:Categorie',
-                    'choice_label' => 'name_categorie'));
-        }
-
-        if($options['block_name'] == 'create_quiz_two')
-        {
-            $builder
                 ->add('id_theme', EntityType::class, array(
-                     'class' => 'QuizBundle:Theme',
-                     'choice_label' => 'name_theme'));
-
-            for($i = 0; $i <= 20; $i++)
-            {
-                $builder->add('name_question'.$i, TextType::class, ['mapped' => false]);
-                for($y = 1; $y <= 4; $y++)
-                {
-                    $builder->add('name_reponse'.$count, TextType::class, ['mapped' => false]);
-
-                    $builder->add('resultat'.$count, ChoiceType::class ,array(
-                        'mapped' => false,
-                        'choices' => array(
-                            'Vrai ou Faux' => array(
-                                'Vrai' => 'Vrai',
-                                'Faux' => 'Faux',
-                            ))));
-
-                    $count++;
-                }
-            }
-
+                    'class' => 'QuizBundle:Theme',
+                    'choice_label' => 'name_theme'));
         }
 
         $builder
