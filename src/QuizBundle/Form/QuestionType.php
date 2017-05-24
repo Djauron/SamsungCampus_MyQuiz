@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class QuestionType extends AbstractType
 {
@@ -16,23 +17,23 @@ class QuestionType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $count = 1;
         $builder
             ->add('name_question');
 
         for($y = 1; $y <= 4; $y++)
         {
-            $builder->add('name_reponse'.$count, TextType::class, ['mapped' => false]);
+            $builder->add('name_reponse'.$y, TextType::class, ['mapped' => false]);
 
-            $builder->add('resultat'.$count, ChoiceType::class ,array(
+            $builder->add('resultat'.$y, ChoiceType::class ,array(
                 'mapped' => false,
                 'choices' => array(
                     'Vrai ou Faux' => array(
                         'Vrai' => 'Vrai',
                         'Faux' => 'Faux',
                     ))));
-            $count++;
         }
+        $builder
+            ->add('save', SubmitType::class);
     }
     
     /**

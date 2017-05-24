@@ -14,7 +14,11 @@ class QuizController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('QuizBundle:Quiz:index.html.twig');
+        $quiz = new Quiz();
+        $em = $this->getDoctrine()->getManager();
+        $quiz = $em->getRepository('QuizBundle:Quiz')->findAll();
+
+        return $this->render('QuizBundle:Quiz:index.html.twig', array('quizs' => $quiz));
     }
 
     public function createAction(Request $request)
@@ -28,24 +32,30 @@ class QuizController extends Controller
         if ($form->isSubmitted() && $form->isValid())
         {
             $date_created = new \DateTime(date("Y-m-d H:i:s"));
+
             $user = $em->getRepository('AppBundle:User')->find($this->getUser()->getId());
             $theme = $em->getRepository('QuizBundle:Theme')->find($form->getData()->getIdTheme());
             $categorie = $em->getRepository('QuizBundle:Categorie')->find($theme->getIdCategorie());
 
-                $quiz->setNameQuiz($form->getData()->getNameQuiz());
-                $quiz->setCategorie($categorie);
-                $quiz->setCreateur($user);
-                $quiz->setCreateAt($date_created);
-                $quiz->setUpdateAt($date_created);
-                $quiz->setTheme($theme);
-                $em->persist($quiz);
-                $em->flush();
-                $idQuiz = $quiz->getId();
-                return $this->redirectToRoute('quiz_create_quiz_two', ['id' => $idQuiz]);
+            $quiz->setNameQuiz($form->getData()->getNameQuiz());
+            $quiz->setCategorie($categorie);
+            $quiz->setUser($user);
+            $quiz->setCreateAt($date_created);
+            $quiz->setUpdateAt($date_created);
+            $quiz->setTheme($theme);
+            $em->persist($quiz);
+            $em->flush();
+            $idQuiz = $quiz->getId();
+            return $this->redirectToRoute('quiz_create_quiz_two', ['id' => $idQuiz]);
 
 
         }
 
         return $this->render('QuizBundle:Quiz:create_quiz.html.twig', array('form' => $form->createView()));
+    }
+
+    public function playAction(Request $request, $id)
+    {
+        return $this->render('QuizBundle:Quiz:play_quiz.html.twig');
     }
 }

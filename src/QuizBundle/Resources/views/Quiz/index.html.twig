@@ -1,5 +1,12 @@
 {% extends "@FOSUser/layout.html.twig" %}
 
 {% block fos_user_content %}
-    coucou index
+    {% for quiz in quizs %}
+        {{ quiz.user.username }}
+        {{ quiz.namequiz }}
+        {{ quiz.createAt|date('d-m-Y') }}
+        {{ quiz.theme.nameTheme }}
+        {{ quiz.categorie.nameCategorie }}
+        <a href="play/{{ quiz.id }}" class="btn">Jouer a ce quiz</a>
+    {% endfor %}
 {% endblock fos_user_content %}

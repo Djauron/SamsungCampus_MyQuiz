@@ -6,6 +6,10 @@ quiz_create_quiz:
     path:     /create/quiz
     defaults: { _controller: QuizBundle:Quiz:create }
 
+quiz_play_quiz:
+    path:     /play/{id}
+    defaults: { _controller: QuizBundle:Quiz:play }
+
 quiz_create_quiz_two:
     path:     /create/next/quiz/{id}
     defaults: { _controller: QuizBundle:Question:create }

@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping\OneToMany;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping\OneToOne;
 use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\ManyToOne;
 
 /**
  * @ORM\Entity(repositoryClass="QuizBundle\Repository\QuizRepository")
@@ -54,21 +55,21 @@ class Quiz
 
 
     /**
-     * @OneToOne(targetEntity="Theme")
+     * @ManyToOne(targetEntity="Theme")
      * @JoinColumn(name="id_theme", referencedColumnName="id")
      */
 
     private $theme;
 
     /**
-     * @OneToOne(targetEntity="Categorie")
+     * @ManyToOne(targetEntity="Categorie")
      * @JoinColumn(name="id_categorie", referencedColumnName="id")
      */
 
     private $categorie;
 
     /**
-     * @OneToOne(targetEntity="AppBundle\Entity\User")
+     * @ManyToOne(targetEntity="AppBundle\Entity\User")
      * @JoinColumn(name="createur", referencedColumnName="id")
      */
 
@@ -177,7 +178,7 @@ class Quiz
     public function setTheme($theme)
     {
         $this->theme = $theme;
-        return $this->theme;
+        return $this;
     }
 
     public function getCategorie()
@@ -188,7 +189,7 @@ class Quiz
     public function setCategorie($categorie)
     {
         $this->categorie = $categorie;
-        return $this->categorie;
+        return $this;
     }
 
     public function getUser()
@@ -199,6 +200,6 @@ class Quiz
     public function setUser($user)
     {
         $this->user = $user;
-        return $this->user;
+        return $this;
     }
 }

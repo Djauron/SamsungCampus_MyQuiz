@@ -100,5 +100,6 @@ class Question
     public function setReponse($reponse)
     {
         $this->reponse = $reponse;
+        return $this;
     }
 }

@@ -16,31 +16,36 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class QuestionController extends Controller
 {
-    public function createAction(Request $request)
+    public function createAction(Request $request, $id)
     {
 
         $question = new Question();
-        $reponse = new Reponse();
+
 
         $em = $this->getDoctrine()->getManager();
 
         $form = $this->get('form.factory')->create(QuestionType::class, $question);
-
-        $question->setNameQuestion($form->getData()->getNameQuestion());
-        //$reponse->setNameReponse($form->get('name_reponse')->getData());
-
-
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid())
         {
-            try
+            $quiz = $em->getRepository('QuizBundle:Quiz')->find($id);
+            $question->setQuiz($quiz);
+
+            $question->setNameQuestion($form->getData()->getNameQuestion());
+            for($i = 1; $i <= 4; $i++)
             {
-                return $this->render('QuizBundle:Question:create_quiz_two.html.twig');
+                $reponse = new Reponse();
+                $reponse->setNameReponse($request->request->get('quizbundle_question')['name_reponse'.$i]);
+                $reponse->setResultat($request->request->get('quizbundle_question')['resultat'.$i]);
+                $reponse->setQuestion($question);
+                $em->persist($reponse);
             }
-            catch(\Exception $e)
-            {
-                $this->get('session')->getFlashBag()->add('warning', 'Erreur');
-            }
+            $em->persist($question);
+
+                $em->flush();
+
+
         }
         return $this->render('QuizBundle:Question:create_quiz_two.html.twig',array('form' => $form->createView()));
     }
