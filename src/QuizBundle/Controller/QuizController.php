@@ -56,6 +56,18 @@ class QuizController extends Controller
 
     public function playAction(Request $request, $id)
     {
-        return $this->render('QuizBundle:Quiz:play_quiz.html.twig');
+        $question = new Question();
+        $em = $this->getDoctrine()->getManager();
+
+
+        $question = $em->getRepository('QuizBundle:Question')->findBy(array('id_quiz' => $id));
+        $reponse = $em->getRepository('QuizBundle:Reponse')->findBy(array('id_question' => $question));
+
+        return $this->render('QuizBundle:Quiz:play_quiz.html.twig', array('questions' => $question, 'reponses' => $reponse));
+    }
+
+    public function pannelAction(Request $request)
+    {
+        return $this->render('QuizBundle:Quiz:pannel_quiz.html.twig');
     }
 }

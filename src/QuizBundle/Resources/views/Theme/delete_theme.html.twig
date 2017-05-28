@@ -1,7 +1,10 @@
 {% extends "@FOSUser/layout.html.twig" %}
 
 {% block fos_user_content %}
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    {{ form_end(form) }}
+    <div class="pannel-center">
+        {{ form_start(form ,{ 'attr': { 'class': 'form-signin' } }) }}
+        {{ form_label(form.id, 'Theme a supprimer :') }}
+        {{ form_widget(form.id, { 'attr': {'class': 'form-control'} }) }}
+        {{ form_end(form) }}
+    </div>
 {% endblock fos_user_content %}

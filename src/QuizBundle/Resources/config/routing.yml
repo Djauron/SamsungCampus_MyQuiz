@@ -10,6 +10,14 @@ quiz_play_quiz:
     path:     /play/{id}
     defaults: { _controller: QuizBundle:Quiz:play }
 
+quiz_valid_quiz:
+    path:     /pannel/valid/{id}
+    defaults: { _controller: QuizBundle:Question:valid }
+
+quiz_pannel_quiz:
+    path:     /pannel
+    defaults: { _controller: QuizBundle:Quiz:pannel }
+
 quiz_create_quiz_two:
     path:     /create/next/quiz/{id}
     defaults: { _controller: QuizBundle:Question:create }

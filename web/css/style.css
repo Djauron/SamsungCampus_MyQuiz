@@ -106,3 +106,41 @@ body {
 {
     color: black;
 }
+
+.pannel-center
+{
+    background-color: rgba(255,255,255,0.7);
+    width: 50%;
+    margin: auto;
+}
+
+.service a
+{
+    margin-left: 42%;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.panel-quiz
+{
+    background-color: rgba(255,255,255, 0.7);
+    width: 15%;
+    margin: 5px 10px 5px 10px;
+    float: left;
+}
+
+.panel-quiz-center
+{
+    width: 80%;
+    margin: auto;
+}
+
+.panel-quiz p
+{
+    text-align: center;
+}
+
+.panel-quiz a
+{
+    margin-left: 50px;
+}

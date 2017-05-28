@@ -1,5 +1,25 @@
 {% extends "@FOSUser/layout.html.twig" %}
 
 {% block fos_user_content %}
-toto
+{{ dump(questions) }}
+    {{ dump(reponses) }}
+    <div class="panel-quiz-center">
+
+        {% set count = 4 %}
+            {% for question in questions %}
+                {% if count % 4 == 0 %}
+                <div>
+                    <p>Question : {{ question.nameQuestion }} ?</p>
+                </div>
+                {% endif %}
+                {% for reponse in reponses %}
+                    <div>
+                        <p>Reponse : {{ reponse.nameReponse }}</p>
+                    </div>
+                    {% set count = count + 1 %}
+                {% endfor %}
+            {% endfor %}
+
+
+    </div>
 {% endblock fos_user_content %}

@@ -1,0 +1,9 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block fos_user_content %}
+    <div class="pannel-center">
+        <p>Creation question reussi !</p>
+        <a href="/create/next/quiz/{{ id }}">Cree une autre Question</a>
+        <a href="/index">Retour sur l'index</a>
+    </div>
+{% endblock fos_user_content %}

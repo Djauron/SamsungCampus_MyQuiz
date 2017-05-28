@@ -1,12 +1,16 @@
 {% extends "@FOSUser/layout.html.twig" %}
 
 {% block fos_user_content %}
+<div class="panel-quiz-center">
     {% for quiz in quizs %}
-        {{ quiz.user.username }}
-        {{ quiz.namequiz }}
-        {{ quiz.createAt|date('d-m-Y') }}
-        {{ quiz.theme.nameTheme }}
-        {{ quiz.categorie.nameCategorie }}
-        <a href="play/{{ quiz.id }}" class="btn">Jouer a ce quiz</a>
+    <div class="panel-quiz">
+        <p>Cree par : {{ quiz.user.username }}</p>
+        <p>Nom du Quiz : {{ quiz.namequiz }}</p>
+        <p>Cree le : {{ quiz.createAt|date('d-m-Y') }}</p>
+        <p>Theme : {{ quiz.theme.nameTheme }}</p>
+        <p>Categorie : {{ quiz.categorie.nameCategorie }}</p>
+        <a href="play/{{ quiz.id }}" class="btn btn-success">Jouer a ce quiz</a>
+    </div>
     {% endfor %}
+</div>
 {% endblock fos_user_content %}

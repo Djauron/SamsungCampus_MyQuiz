@@ -1,7 +1,12 @@
 {% extends "@FOSUser/layout.html.twig" %}
 
 {% block fos_user_content %}
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
+<div class="pannel-center">
+    {{ form_start(form ,{ 'attr': { 'class': 'form-signin' } }) }}
+    {{ form_label(form.name_quiz, 'Nom du quiz :') }}
+    {{ form_widget(form.name_quiz, { 'attr': {'class': 'form-control'} }) }}
+    {{ form_label(form.id_theme, 'Choisir le theme:') }}
+    {{ form_widget(form.id_theme, { 'attr': {'class': 'form-control'} }) }}
     {{ form_end(form) }}
+</div>
 {% endblock fos_user_content %}

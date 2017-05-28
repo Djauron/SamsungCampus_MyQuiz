@@ -41,12 +41,25 @@ class QuestionController extends Controller
                 $reponse->setQuestion($question);
                 $em->persist($reponse);
             }
-            $em->persist($question);
 
+            try
+            {
+                $em->persist($question);
                 $em->flush();
+                return $this->redirectToRoute('quiz_valid_quiz', ['id' => $id]);
+            }
+            catch(\Exception $e)
+            {
+                $this->get('session')->getFlashBag()->add('warning', 'Erreur creation Question');
+            }
 
 
         }
         return $this->render('QuizBundle:Question:create_quiz_two.html.twig',array('form' => $form->createView()));
+    }
+
+    public function validAction(Request $request, $id)
+    {
+        return $this->render('QuizBundle:Question:valid_quiz.html.twig', array('id' => $id));
     }
 }

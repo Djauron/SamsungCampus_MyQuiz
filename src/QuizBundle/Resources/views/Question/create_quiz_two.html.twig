@@ -1,7 +1,30 @@
 {% extends "@FOSUser/layout.html.twig" %}
 
 {% block fos_user_content %}
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
+<div class="pannel-center">
+    {{ form_start(form ,{ 'attr': { 'class': 'form-signin' } }) }}
+    {{ form_label(form.name_question, 'Question :') }}
+    {{ form_widget(form.name_question, { 'attr': {'class': 'form-control'} }) }}
+    {{ form_label(form.name_reponse1, 'Reponse A:') }}
+    {{ form_widget(form.name_reponse1, { 'attr': {'class': 'form-control'} }) }}
+    {{ form_label(form.resultat1, 'Valeur Resultat 1:') }}
+    {{ form_widget(form.resultat1, { 'attr': {'class': 'form-control'} }) }}
+
+    {{ form_label(form.name_reponse2, 'Reponse B:') }}
+    {{ form_widget(form.name_reponse2, { 'attr': {'class': 'form-control'} }) }}
+    {{ form_label(form.resultat2, 'Valeur Resultat 2:') }}
+    {{ form_widget(form.resultat2, { 'attr': {'class': 'form-control'} }) }}
+
+    {{ form_label(form.name_reponse3, 'Reponse C:') }}
+    {{ form_widget(form.name_reponse3, { 'attr': {'class': 'form-control'} }) }}
+    {{ form_label(form.resultat3, 'Valeur Resultat 3:') }}
+    {{ form_widget(form.resultat3, { 'attr': {'class': 'form-control'} }) }}
+
+    {{ form_label(form.name_reponse4, 'Reponse D:') }}
+    {{ form_widget(form.name_reponse4, { 'attr': {'class': 'form-control'} }) }}
+    {{ form_label(form.resultat4, 'Valeur Resultat 4:') }}
+    {{ form_widget(form.resultat4, { 'attr': {'class': 'form-control'} }) }}
+
     {{ form_end(form) }}
+</div>
 {% endblock fos_user_content %}
