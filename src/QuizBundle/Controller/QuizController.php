@@ -2,6 +2,7 @@
 
 namespace QuizBundle\Controller;
 
+use AppBundle\Entity\User;
 use QuizBundle\Entity\Question;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use QuizBundle\Entity\Quiz;
@@ -33,7 +34,7 @@ class QuizController extends Controller
         {
             $date_created = new \DateTime(date("Y-m-d H:i:s"));
 
-            $user = $em->getRepository('AppBundle:User')->find($this->getUser()->getId());
+            $user = $quiz->setCreateur(1);
             $theme = $em->getRepository('QuizBundle:Theme')->find($form->getData()->getIdTheme());
             $categorie = $em->getRepository('QuizBundle:Categorie')->find($theme->getIdCategorie());
 

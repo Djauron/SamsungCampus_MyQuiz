@@ -4,7 +4,7 @@
 <div class="panel-quiz-center">
     {% for quiz in quizs %}
     <div class="panel-quiz">
-        <p>Cree par : {{ quiz.user.username }}</p>
+        {#<p>Cree par : {{ quiz.user.username }}</p>#}
         <p>Nom du Quiz : {{ quiz.namequiz }}</p>
         <p>Cree le : {{ quiz.createAt|date('d-m-Y') }}</p>
         <p>Theme : {{ quiz.theme.nameTheme }}</p>
